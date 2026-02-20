@@ -1,0 +1,51 @@
+name: Build and Release
+
+on:
+  push:
+    branches: [ master, main ]
+    tags:
+      - 'v*'
+  pull_request:
+    branches: [ master, main ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    
+    - name: Setup NuGet
+      uses: nuget/setup-nuget@v1
+      with:
+        nuget-version: 'latest'
+    
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1.1
+    
+    - name: Restore NuGet packages
+      run: nuget restore Relationship.Documentor.sln
+    
+    - name: Build Solution
+      run: msbuild Relationship.Documentor.sln /p:Configuration=Release /p:Platform="Any CPU"
+    
+    - name: List build output
+      run: dir Relationship.Documentor\bin\Release
+    
+    - name: Upload Build Artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: plugin-dll
+        path: Relationship.Documentor/bin/Release/Relationship.Documentor.dll
+    
+    - name: Create NuGet Package (on tag)
+      if: startsWith(github.ref, 'refs/tags/v')
+      run: nuget pack Relationship.Documentor.nuspec
+    
+    - name: Upload NuGet Package
+      if: startsWith(github.ref, 'refs/tags/v')
+      uses: actions/upload-artifact@v3
+      with:
+        name: nuget-package
+        path: '*.nupkg'

@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+	<metadata>
+		<id>Relationship.Documentor</id>
+		<version>1.0.0</version>
+		<title>Relationship Documentor for XrmToolBox</title>
+		<authors>Kamaldeep Singh</authors>
+		<owners>kamaldeepsingh</owners>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<license type="expression">MIT</license>
+		<projectUrl>https://github.com/kamaldeeps22/Relationship-Documentor</projectUrl>
+		<iconUrl>https://raw.githubusercontent.com/kamaldeeps22/Relationship-Documentor/master/docs/RelationshipDocumentor_Main_80.png</iconUrl>
+		<description>Document and export Microsoft Dynamics 365 / Dataverse entity relationships with solution-aware filtering and Excel export capabilities. Features multi-table selection, comprehensive relationship metadata, and smart Excel sheet naming.</description>
+		<summary>XrmToolBox plugin for documenting Dynamics 365 entity relationships</summary>
+		<releaseNotes>
+			Version 1.0.0:
+			- Multi-table selection with persistent state
+			- Solution-aware filtering
+			- Excel export with sanitization
+			- Complete relationship metadata (1:N, N:1, N:N)
+			- Cascade behavior documentation
+			- Settings persistence
+			- Comprehensive error logging
+		</releaseNotes>
+		<copyright>Copyright © 2026 Kamaldeep Singh</copyright>
+		<tags>XrmToolBox Dynamics365 Dataverse CRM Metadata Relationships Documentation Export</tags>
+
+		<dependencies>
+			<dependency id="XrmToolBox" version="1.2023.12.68" />
+			<dependency id="Microsoft.CrmSdk.CoreAssemblies" version="9.0.2.56" />
+		</dependencies>
+	</metadata>
+
+	<files>
+		<file src="Relationship.Documentor\bin\Release\Relationship.Documentor.dll" target="lib\net462" />
+	</files>
+</package>

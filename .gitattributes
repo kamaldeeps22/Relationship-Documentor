@@ -1,0 +1,30 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Source code
+*.cs     text diff=csharp
+*.csproj text
+*.sln    text
+
+# Documentation
+*.md     text
+*.txt    text
+
+# Scripts
+*.ps1    text
+*.bat    text
+*.sh     text
+
+# Images
+*.png    binary
+*.jpg    binary
+*.gif    binary
+*.ico    binary
+
+# Archives
+*.zip    binary
+*.nupkg  binary
+
+# Excel
+*.xlsx   binary
+*.xls    binary
